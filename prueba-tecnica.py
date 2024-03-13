@@ -2,6 +2,9 @@ import os
 
 def buscarPalabra(archivo, palabra):
     cantidad = 0
+    if os.path.isfile(archivo) == False:
+        print("El archivo no existe")
+        return [0, ""]
     archivoLeido = open(archivo, encoding="utf8")
     lineasArchivo = []
     if os.stat(archivo).st_size == 0:
@@ -19,8 +22,8 @@ palabra = "dragones"
 archivo = "La comunidad del anillo.txt"
 resultado = buscarPalabra(archivo, palabra)
 print("La cantidad de veces que aparece la palabra", palabra, "es :", resultado[0], "\n")
-print("Las lineas donde aparecio la palabra son:")
-
-for linea in resultado[1]:
-    print(linea)
+if resultado[1] != "":
+    print("Las lineas donde aparecio la palabra son:")
+    for linea in resultado[1]:
+        print(linea)
 
